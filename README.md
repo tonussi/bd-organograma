@@ -1,7 +1,7 @@
 Windows        | Mac/Linux
 -------------- | ------------
 
-# Atelopus Vaius
+# Atelopus Varius
 
 ![Atelopus Varius](http://upload.wikimedia.org/wikipedia/commons/0/0a/Atelopus_varius_1.jpg)
 
