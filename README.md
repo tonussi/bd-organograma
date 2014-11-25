@@ -2,7 +2,7 @@
 
 # Autores
 
-- [Lucas Tonuss](https://github.com/tonussi/) :fire:
+- [Lucas Tonussi](https://github.com/tonussi/) :fire:
 
 - [Thiago Rose](https://github.com/thisenrose/) :anchor:
 
@@ -24,7 +24,7 @@ alocacao (_id, data_alocacao, #codLocal, #codHom)
   codHom references homologado (id)
 assinatura (_id, data_assinatura, #codFun, #codHomo)
   codFun references funcionario (id)
-  codHomo refenrences homologado (id)
+  codHomo references homologado (id)
 funcionario (_id, nome, idade, salario, data_egresso, data_ingresso)
 projeto (_id, breve_descricao, data_inicio)
 participacao_projeto (_id, data_inicio, data_fim, #codFun, #codProj)
@@ -37,7 +37,7 @@ tempo_gasto)
 subtarefas (_id, breve_descricao, estado, prioridade, tempo_gasto)
   codTar references tarefa (id, codProj)
 coordenador (_id, designacao, _#codFun)
-  references funcionario (id)
+  codFun references funcionario (id)
 coordenador_projeto (_#codCoord, _#codProj)
   codCoord references coordenador (id)
   codProj references projeto (id)
