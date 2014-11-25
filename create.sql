@@ -1,6 +1,6 @@
 create table orcamento  ( id integer primary key
                         , valor numeric(10, 2)
-                        , data date
+                        , data timestamp without time zone default tonussi_now()
                         );
 
 create table material ( id integer
@@ -35,9 +35,8 @@ create table local ( id integer primary key
                    );
 
 create table alocacao ( id integer primary key
-                      , dataalocacao date
+                      , dataalocacao timestamp without time zone default tonussi_now()
                       );
-
 
   -- codlocal references local (id)
 alter table alocacao add constraint codlocalfk foreign key (codlocal) references local (id);
@@ -45,7 +44,7 @@ alter table alocacao add constraint codlocalfk foreign key (codlocal) references
 alter table alocacao add constraint codhomfk foreign key (codhom) references homologado (id);
 
 create table assinatura ( id integer primary key
-                        , data_assinatura date not null
+                        , data_assinatura timestamp without time zone default tonussi_now() not null
                         );
 
 
@@ -58,8 +57,8 @@ create table funcionario ( id integer primary key
                          , nome varchar(60) not null check (nome <> '')
                          , idade integer not null
                          , salario numeric(10,2) not null
-                         , dataegresso date
-                         , dataingresso date not null
+                         , dataegresso timestamp without time zone default tonussi_now()
+                         , dataingresso timestamp without time zone default tonussi_now() not null
                          );
 
 -- create table alteracoes_funcionario ( id integer primary key
@@ -75,8 +74,8 @@ create table projeto ( id integer primary key
                      );
 
 create table participacaoprojeto  ( id integer primary key
-                                  , datainicio date not null
-                                  , datafim date null
+                                  , datainicio timestamp without time zone default tonussi_now() not null
+                                  , datafim timestamp without time zone default tonussi_now() null
                                   );
 
   -- codfun references funcionario (id)
