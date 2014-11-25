@@ -61,7 +61,7 @@ create table projeto ( id integer primary key
 
 create table participacaoprojeto  ( id integer primary key
                                   , datainicio date not null
-                                  , datafim date not null
+                                  , datafim date null
                                   );
 
   -- codFun references funcionario (id)
