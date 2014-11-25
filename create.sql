@@ -4,7 +4,7 @@ create table orcamento  ( id integer primary key
                         );
 
 create table material ( id integer
-                      , descricao varchar(60) not null check (descricao <> '')
+                      , brevedescricao varchar(60) not null check (descricao <> '')
                       );
 
 create table orcamentosmateriais ( id integer primary key
