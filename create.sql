@@ -50,7 +50,7 @@ create table funcionario ( id integer primary key
                          , nome varchar(60) not null check (nome <> '')
                          , idade integer not null
                          , salario numeric(10,2) not null
-                         , dataegresso date not null
+                         , dataegresso date
                          , dataingresso date not null
                          );
 
@@ -80,7 +80,8 @@ create table tarefa ( id integer primary key
   -- codSubtar references subtarefas (id)
 
 create table subtarefas (id brevedescricao estado prioridade tempogasto)
-  codTar references tarefa (id codProj)
+
+  -- codTar references tarefa (id codProj)
 
 create table coordenador ( id integer primary key
                          , designacao varchar(60) not null check (designacao <> '')
@@ -88,9 +89,9 @@ create table coordenador ( id integer primary key
 
   -- codFun references funcionario (id)
 
--- create table coordenadorprojeto ( codCoord
---                                 , codProj
---                                 );
+  -- create table coordenadorprojeto ( codCoord
+  --                                 , codProj
+  --                                 );
 
   -- codCoord references coordenador (id)
   -- codProj references projeto (id)
