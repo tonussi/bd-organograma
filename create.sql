@@ -1,7 +1,6 @@
-create table orcamento  ( id integer
-                        , valor numeric(10, 2)
+create table orcamento  ( id integer primary key
+                        , valor numeric(10, 2) not null
                         , data timestamp without time zone default agora()
-                        , primary key (id)
                         );
 
 create table material ( id integer
