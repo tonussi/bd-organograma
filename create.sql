@@ -5,12 +5,12 @@ create table orcamento  ( id integer
                         );
 
 create table material ( id integer
-                      , brevedescricao varchar(60) not null check (descricao <> '')
+                      , brevedescricao varchar(60) not null check (brevedescricao <> '')
                       );
 
 create table orcamentosmateriais ( id integer primary key
-                                 , quantidade integer
-                                 , preco numeric(10, 2)
+                                 , quantidade integer not null check (quantidade > 0)
+                                 , preco numeric(10, 2) not null check (preco > 0)
                                  , codorc integer
                                  , codmat integer
                                  );
