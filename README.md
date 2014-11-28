@@ -2,9 +2,9 @@
 
 # Autores
 
-- [Lucas Tonussi](https://github.com/tonussi/) :fire:
+- [Lucas Tonussi](https://github.com/tonussi/) :rocket:
 
-- [Thiago Rose](https://github.com/thisenrose/) :anchor:
+- [Thiago Rose](https://github.com/thisenrose/) :black_joker:
 
 # Esquema conceitual
 
@@ -30,8 +30,7 @@ projeto (_id, breve_descricao, data_inicio)
 participacao_projeto (_id, data_inicio, data_fim, #codFun, #codProj)
   codFun references funcionario (id)
   codProj references projeto (id)
-tarefa (_id, _#codProj, breve_descricao, estado, prioridade,
-tempo_gasto)
+tarefa (_id, _#codProj, breve_descricao, estado, prioridade, datahorainicial, datahorafinal, #codSubtar)
   codProj references projeto (id)
   codSubtar references tarefas (id, codProj)
 coordenador (_id, designacao, _#codFun)
