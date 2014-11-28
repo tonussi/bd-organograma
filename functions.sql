@@ -1,3 +1,3 @@
-create function tonussi_now() returns timestamp as $$
+create function agora() returns timestamp as $$
   select now()::timestamp without time zone;
 $$ language pgsql;
