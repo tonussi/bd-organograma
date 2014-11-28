@@ -1,6 +1,6 @@
 create table orcamento  ( id integer
                         , valor numeric(10, 2)
-                        , data timestamp without time zone default tonussi_now()
+                        , data timestamp without time zone default agora()
                         , primary key (id)
                         );
 
@@ -44,7 +44,7 @@ create table local ( id integer primary key
 -- alter table local add constraint localizacaounica unique(sala)
 
 create table alocacao ( id integer primary key
-                      , dataalocacao timestamp without time zone default tonussi_now()
+                      , dataalocacao timestamp without time zone default agora()
                       , codlocal integer
                       , codhom integer
                       );
@@ -55,7 +55,7 @@ alter table alocacao add constraint codlocal_fkey foreign key (codlocal) referen
 alter table alocacao add constraint codhom_fkey foreign key (codhom) references homologado (id);
 
 create table assinatura ( id integer primary key
-                        , data_assinatura timestamp without time zone default tonussi_now()
+                        , data_assinatura timestamp without time zone default agora()
                         , codfun integer
                         , codhomo integer
                         );
@@ -70,8 +70,8 @@ create table funcionario ( id integer primary key
                          , nome varchar(60) not null check (nome <> '')
                          , idade integer not null
                          , salario numeric(10,2) not null
-                         , dataegresso timestamp without time zone default tonussi_now()
-                         , dataingresso timestamp without time zone default tonussi_now()
+                         , dataegresso timestamp without time zone default agora()
+                         , dataingresso timestamp without time zone default agora()
                          );
 
 -- create table alteracoes_funcionario ( id integer primary key
@@ -83,12 +83,12 @@ create table funcionario ( id integer primary key
 
 create table projeto ( id integer primary key
                      , brevedescricaov varchar(60) not null
-                     , datainicio data not null
+                     , datainicio timestamp without time zone default agora()
                      );
 
 create table participacaoprojeto  ( id integer primary key
-                                  , datainicio timestamp without time zone default tonussi_now()
-                                  , datafim timestamp without time zone default tonussi_now()
+                                  , datainicio timestamp without time zone default agora()
+                                  , datafim timestamp without time zone default agora()
                                   , codfun integer
                                   , codproj integer
                                   );
@@ -102,7 +102,8 @@ create table tarefa ( id integer primary key
                     , brevedescricao varchar(60)
                     , estado varchar(60)
                     , prioridade varchar(60)
-                    , tempogasto integer
+                    , datainicial timestamp without time zone default agora()
+                    , datafinal timestamp without time zone default agora()
                     , codsubtar integer
                     );
 
