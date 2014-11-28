@@ -1,4 +1,12 @@
-(ง •̀_•́)ง
+(ง •̀_•́)ง Ordem de execução dos arquivos ´.sql´.
+
+```sh
+psql -U uname -d dbname -a -f functions.sql
+psql -U uname -d dbname -a -f   trigger.sql
+psql -U uname -d dbname -a -f    create.sql
+psql -U uname -d dbname -a -f    insert.sql
+psql -U uname -d dbname -a -f     query.sql # test
+```
 
 # Autores
 
