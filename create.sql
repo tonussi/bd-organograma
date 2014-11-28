@@ -130,6 +130,7 @@ create table coordenador ( id integer primary key
                          );
 
   -- codfun references funcionario (id)
+alter table coordenador add constraint codfun_fkey foreign key (codfun) references funcionario (id);
 
   -- create table coordenadorprojeto ( codcoord
   --                                 , codproj
@@ -142,9 +143,11 @@ alter table tarefa add constraint codproj_fkey foreign key (codproj) references 
 
 create table programador ( id integer primary key
                          , rank varchar(60) not null check (rank <> '')
+                         , codfun integer
                          );
 
   -- codfun references funcionario (id)
+alter table programador add constraint codfun_fkey foreign key (codfun) references funcionario (id);
 
 create table linguagem ( id integer primary key
                        , nome varchar(60) not null check (nome <> '')
