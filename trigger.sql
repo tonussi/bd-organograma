@@ -157,3 +157,59 @@ $tarefas8_80$ language plpgsql;
 
 create trigger tarefas8_80 before insert or update on tarefa
   for each row execute procedure tarefas8_80();
+
+-- trigger 4
+
+-- create table projeto ( id integer primary key
+--                      , brevedescricao varchar(60) not null
+--                      , datahorainicio timestamp without time zone default agora()
+--                      , datahorafim timestamp without time zone
+--                      );
+--
+-- create table participacaoprojeto  ( id integer primary key
+--                                   , datahorainicio timestamp without time zone default agora()
+--                                   , datahorafim timestamp without time zone
+--                                   , codfun integer
+--                                   , codproj integer
+--                                   );
+
+create or replace function datahora_participacao_projeto() returns trigger as $datahora_participacao_projeto$
+  declare tmpdatahorainicio timestamp;
+  declare tmpdatahorafim timestamp;
+
+  begin
+    tmpdatahorainicio = datahorainicio from projeto p where p.id = new.codproj;
+    tmpdatahorafim = datahorainicio from projeto p where p.id = new.codproj;
+
+    if new.datahorainicio < tmpdatahorainicio then
+      raise exception 'Datahorainicio de participacaoprojeto tem que ser maior que datahorainicio do projeto. Obtive: %s < %s', new.datahorainicio, tmpdatahorainicio;
+    end if;
+
+    if new.datahorafim > tmpdatahorafim then
+      raise exception 'Datahorafim de participacaoprojeto tem que ser menor ou igual que datahorafim do projeto. Obtive: %s > %s', new.datahorafim, tmpdatahorafim;
+    end if;
+
+    if new.datahorainicio < tmpdatahorafim then
+      raise exception 'Datahorainicio de participacaoprojeto tem que ser menor que datahorafim do projeto. Obtive: %s < %s', new.datahorainicio, tmpdatahorafim;
+    end if;
+
+    if new.datahorainicio < tmpdatahorafim then
+      raise exception 'Datahorainicio de participacaoprojeto tem que ser menor que datahorafim do projeto. Obtive: %s < %s', new.datahorainicio, tmpdatahorafim;
+    end if;
+
+    if new.datahorainicio < tmpdatahorafim then
+      raise exception 'Datahorainicio de participacaoprojeto tem que ser menor que datahorafim do projeto. Obtive: %s < %s', new.datahorainicio, tmpdatahorafim;
+    end if;
+
+    if new.datahorafim > tmpdatahorainicio then
+      raise exception 'Datahorafim de participacaoprojeto tem que ser maior que datahorainicio do projeto. Obtive: %s > %s', new.datahorafim, tmpdatahorainicio;
+    end if;
+
+    return new;
+
+  end;
+
+$datahora_participacao_projeto$ language plpgsql;
+
+create trigger datahora_participacao_projeto after insert or update or delete on participacaoprojeto
+  for each row execute procedure datahora_participacao_projeto();
