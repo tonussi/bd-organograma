@@ -1,0 +1,16 @@
+create index "orcamento_idx" on "orcamento" (id);
+create index "material_idx" on "material" (id);
+create index "orcamentosmateriais_idx" on "orcamentosmateriais" (id);
+create index "homologado_idx" on "homologado" (id);
+create index "local_idx" on "local" (id);
+create index "alocacao_idx" on "alocacao" (id);
+create index "assinatura_idx" on "assinatura" (id);
+create index "funcionario_idx" on "funcionario" (id);
+create index "projeto_idx" on "projeto" (id);
+create index "participacaoprojeto_idx" on "participacaoprojeto" (id);
+create index "tarefa_idx" on "tarefa" (id);
+create index "coordenador_idx" on "coordenador" (id);
+create index "coordenadorprojeto_idx" on "coordenadorprojeto" (id);
+create index "programador_idx" on "programador" (id);
+create index "linguagem_idx" on "linguagem" (id);
+create index "programadorlinguagem_idx" on "programadorlinguagem" (id);
