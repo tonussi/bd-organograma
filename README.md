@@ -1,4 +1,4 @@
-(ง •̀_•́)ง Ordem de execução dos arquivos ´.sql´.
+(ง •̀_•́)ง Ordem de execução dos arquivos `.sql`.
 
 ```sh
 psql -U uname -d dbname -a -f functions.sql
@@ -10,11 +10,14 @@ psql -U uname -d dbname -a -f     query.sql # test
 
 # Autores
 
-- [Lucas Tonussi](https://github.com/tonussi/) :rocket:
+- [Lucas Tonussi](https://github.com/tonussi/) :octocat:
 
-- [Thiago Rose](https://github.com/thisenrose/) :black_joker:
+- [Thiago Rose](https://github.com/thisenrose/) :bicyclist:
 
 # Esquema conceitual
+
+* Entidades: `16`
+* Referências: `21`
 
 ```sql
 orcamento (_id, valor, data)
