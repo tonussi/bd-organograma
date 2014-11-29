@@ -189,12 +189,8 @@ create or replace function datahora_participacao_projeto() returns trigger as $d
       raise exception 'Datahorafim de participacaoprojeto tem que ser menor ou igual que datahorafim do projeto. Obtive: %s > %s', new.datahorafim, tmpdatahorafim;
     end if;
 
-    if new.datahorainicio < tmpdatahorafim then
-      raise exception 'Datahorainicio de participacaoprojeto tem que ser menor que datahorafim do projeto. Obtive: %s < %s', new.datahorainicio, tmpdatahorafim;
-    end if;
-
-    if new.datahorainicio < tmpdatahorafim then
-      raise exception 'Datahorainicio de participacaoprojeto tem que ser menor que datahorafim do projeto. Obtive: %s < %s', new.datahorainicio, tmpdatahorafim;
+    if new.datahorainicio < new.datahorafim then
+      raise exception 'Datahorainicio de participacaoprojeto tem que ser menor que datahorafim de participacaoprojeto. Obtive: %s > %s', new.datahorainicio, new.datahorafim;
     end if;
 
     if new.datahorainicio < tmpdatahorafim then
