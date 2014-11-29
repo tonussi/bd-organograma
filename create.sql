@@ -100,8 +100,8 @@ create table participacaoprojeto  ( id integer primary key
 
 create table tarefa ( id integer primary key
                     , brevedescricao varchar(60)
-                    , estado varchar(60)
-                    , prioridade varchar(60)
+                    , estado varchar(60) CHECK (estado IN ('AGUARDANDO DESENVOLVIMENTO', 'EM DESENVOLVIMENTO', 'AGUARDANDO ANALISE', 'EM ANALISE'))
+                    , prioridade varchar(60) CHECK (prioridade IN ('BAIXA', 'MEDIA', 'ALTA'))
                     , datahorainicial timestamp without time zone default agora()
                     , datahorafinal timestamp without time zone
                     , codsubtar integer
