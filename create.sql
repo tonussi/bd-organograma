@@ -80,6 +80,16 @@ create table funcionario ( id integer primary key
 
 -- alter table alteracoes_funcionario add constraint logfun_fkey foreign key (logfunfk) references funcionario (id);
 
+create table funcionariolocal ( id integer primary key
+                              , codfun integer
+                              , codlocal integer
+                              );
+
+  -- codfun references funcionario (id)
+-- alter table funcionariolocal add constraint codfun_fkey foreign key (codfun) references funcionario (id);
+  -- codlocal references local (id)
+-- alter table funcionariolocal add constraint codlocal_fkey foreign key (codlocal) references local (id);
+
 create table projeto ( id integer primary key
                      , brevedescricao varchar(60) not null
                      , datahorainicio timestamp without time zone default agora()
@@ -164,8 +174,3 @@ create table programadorlinguagem ( id integer primary key
 -- alter table programadorlinguagem add constraint codprog_fkey foreign key (codprog) references programador (id);
   -- codling references linguagem (id)
 -- alter table programadorlinguagem add constraint codling_fkey foreign key (codling) references linguagem (id);
-
-create table funcionariolocal ( id integer primary key
-                                  , codfun integer references funcionario (id)
-                                  , codlocal integer references local (id)
-                                  );
