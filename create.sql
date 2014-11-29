@@ -23,6 +23,7 @@ create table homologado ( id integer primary key
                         , codass integer
                         , codaloc integer
                         , codmat integer
+                        , codcoord integer
                         );
 
   -- codass references assinatura (id)
@@ -31,6 +32,8 @@ create table homologado ( id integer primary key
 -- alter table homologado add constraint codaloc_fkey foreign key (codaloc) references alocacao (id);
   -- codmat references material (id)
 -- alter table homologado add constraint codmat_fkey foreign key (codmat) references material (id);
+  -- codcoord references coordenador (id)
+-- alter table homologado add constraint codcoord_fkey foreign key (codcoord) references coordenador (id);
 
 create table local ( id integer primary key
                    , andar integer not null
@@ -45,7 +48,6 @@ create table local ( id integer primary key
 create table alocacao ( id integer primary key
                       , datahoraalocacao timestamp without time zone default agora()
                       , codlocal integer
-                      , codhom integer
                       );
 
   -- codlocal references local (id)
@@ -56,7 +58,6 @@ create table alocacao ( id integer primary key
 create table assinatura ( id integer primary key
                         , datahoraassinatura timestamp without time zone default agora()
                         , codfun integer
-                        , codhomo integer
                         );
 
   -- codfun references funcionario (id)
@@ -82,7 +83,7 @@ create table funcionario ( id integer primary key
 create table projeto ( id integer primary key
                      , brevedescricao varchar(60) not null
                      , datahorainicio timestamp without time zone default agora()
-                     , datahorafim timestamp wihout time zone
+                     , datahorafim timestamp without time zone
                      );
 
 create table participacaoprojeto  ( id integer primary key
