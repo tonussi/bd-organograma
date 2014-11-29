@@ -38,6 +38,6 @@ SELECT funcionario.nome  AS nome_do_funcionario, projeto.brevedescricao AS descr
 
 -- Quinta. Retorna o id e o nome dos funcionários que não são donos de tarefas.
     -- not in
-SELECT id, nome FROM funcionario WHERE id NOT IN (SELECT tarefa.codfundono FROM tarefa WHERE tarefa.codfundono = funcionario.id);
+SELECT id, nome FROM funcionario WHERE TRUE NOT IN (SELECT count(*) > 0 FROM tarefa WHERE tarefa.codfundono IN (funcionario.id) GROUP BY tarefa.codfundono);
     -- not exists
-SELECT id, nome FROM funcionario WHERE NOT EXISTS (SELECT 1 FROM tarefa WHERE tarefa.codfundono = funcionario.id);
+SELECT id, nome FROM funcionario WHERE NOT EXISTS (SELECT count(*) FROM tarefa WHERE tarefa.codfundono IN (funcionario.id) GROUP BY tarefa.codfundono);
