@@ -1,6 +1,6 @@
 create table orcamento  ( id integer primary key
                         , valor numeric(10, 2) not null
-                        , data timestamp without time zone default agora()
+                        , datahoraorcamento timestamp without time zone default agora()
                         );
 
 create table material ( id integer primary key
@@ -43,7 +43,7 @@ create table local ( id integer primary key
 -- alter table local add constraint localizacaounica unique(sala)
 
 create table alocacao ( id integer primary key
-                      , dataalocacao timestamp without time zone default agora()
+                      , datahoraalocacao timestamp without time zone default agora()
                       , codlocal integer
                       , codhom integer
                       );
@@ -54,11 +54,10 @@ create table alocacao ( id integer primary key
 -- alter table alocacao add constraint codhom_fkey foreign key (codhom) references homologado (id);
 
 create table assinatura ( id integer primary key
-                        , data_assinatura timestamp without time zone default agora()
+                        , datahoraassinatura timestamp without time zone default agora()
                         , codfun integer
                         , codhomo integer
                         );
-
 
   -- codfun references funcionario (id)
 -- alter table assinatura add constraint codfun_fkey foreign key (codfun) references funcionario (id);
@@ -69,8 +68,8 @@ create table funcionario ( id integer primary key
                          , nome varchar(60) not null check (nome <> '')
                          , idade integer not null
                          , salario numeric(10,2) not null
-                         , dataegresso timestamp without time zone default agora()
-                         , dataingresso timestamp without time zone default agora()
+                         , datahoraingresso timestamp without time zone default agora()
+                         , datahoraegresso timestamp without time zone
                          );
 
 -- create table alteracoes_funcionario ( id integer primary key
@@ -81,13 +80,14 @@ create table funcionario ( id integer primary key
 -- alter table alteracoes_funcionario add constraint logfun_fkey foreign key (logfunfk) references funcionario (id);
 
 create table projeto ( id integer primary key
-                     , brevedescricaov varchar(60) not null
-                     , datainicio timestamp without time zone default agora()
+                     , brevedescricao varchar(60) not null
+                     , datahorainicio timestamp without time zone default agora()
+                     , datahorafim timestamp wihout time zone
                      );
 
 create table participacaoprojeto  ( id integer primary key
-                                  , datainicio timestamp without time zone default agora()
-                                  , datafim timestamp without time zone default agora()
+                                  , datahorainicio timestamp without time zone default agora()
+                                  , datahorafim timestamp without time zone
                                   , codfun integer
                                   , codproj integer
                                   );
@@ -102,7 +102,7 @@ create table tarefa ( id integer primary key
                     , estado varchar(60)
                     , prioridade varchar(60)
                     , datahorainicial timestamp without time zone default agora()
-                    , datahorafinal timestamp without time zone default agora()
+                    , datahorafinal timestamp without time zone
                     , codsubtar integer
                     , codproj integer
                     , codfun integer
