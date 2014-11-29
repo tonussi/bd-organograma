@@ -72,12 +72,12 @@ o enunciado de sua consulta):
 1. [x] Crie uma consulta que teste duas colunas no WHERE, mas que selecione
 outras duas. A cláusula WHERE deve possuir o operador BETWEEN.
 
-* [ ] Crie uma consulta que acesse duas tabelas. A cláusula SELECT deve possuir
+* [x] Crie uma consulta que acesse duas tabelas. A cláusula SELECT deve possuir
 mais de dois atributos. A cláusula WHERE deve possuir AND e OR. A consulta deve
 possuir três variantes:
 
-  * [ ] Com operador de JOIN
-  * [ ] Com operador de Produto Cartesiano
+  * [x] Com operador de JOIN
+  * [x] Com operador de Produto Cartesiano
   * [ ] Com operador de IN
 
 * [ ] Escreva e crie uma consulta que use <> ALL, e que envolva mais de uma tabela e mais de dois atributos na clásula SELECT.
