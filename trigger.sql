@@ -142,6 +142,10 @@ create or replace function tarefas8_80() returns trigger as $tarefas8_80$
       raise exception 'Campo id nao pode ser nulo';
     end if;
 
+    if new.datahorafinal < new.datahorainicial then
+      raise exception 'Datahorafinal nao pode ser menor que datahorainicial';
+    end if;
+
     if diferenca8_80 > 4800 and diferenca8_80 < 480 then
       raise exception 'Diferenca tem que ser entre 8 horas e 80 horas, inicio: %s, fim: %s', new.datahorafinal, new.datahorainicial;
     end if;
