@@ -103,6 +103,6 @@ possuir o operador IN. A consula deve possuir alguma função de agregação.
 quaisquer e usando a função COUNT(). Utilize o ORDER BY e GROUP BY. A cláusula
 WHERE deve possuir pelo menos dois filtros.
 
-* [ ] Crie uma consulta, que acesse três tabelas que utilize o HAVING. A
+* [x] Crie uma consulta, que acesse três tabelas que utilize o HAVING. A
 cláusula WHERE deve possuir pelo menos dois filtros. O HAVING deve testar o
 valor de retorno de uma função de agregação escrita em uma cláusula SELECT.
