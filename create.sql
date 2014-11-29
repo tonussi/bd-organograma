@@ -107,10 +107,10 @@ create table tarefa ( id integer primary key
                     , codsubtar integer
                     , codproj integer
                     , codfun integer
+                    , codfundono integer
                     );
 
   -- tarefa weak entity, must have the id of project identifying tarefa
-
   -- codfun references funcionario (id)
 -- alter table tarefa add constraint codfun_fkey foreign key (codfun) references projeto (id);
   -- codproj references projeto (id)
@@ -120,6 +120,8 @@ create table tarefa ( id integer primary key
 
   -- codtar references tarefa (id, codproj)
 -- alter table tarefa add constraint codtar_fkey foreign key (codtarfk) references tarefa (id, codproj);
+
+-- alter table tarefa add constraint codfundono_fkey foreign key (codfundono) references projeto (id);
 
 create table coordenador ( id integer primary key
                          , designacao varchar(60) not null check (designacao <> '')

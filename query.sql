@@ -35,3 +35,9 @@ SELECT funcionario.nome, funcionario.idade FROM funcionario JOIN tarefa ON funci
 SELECT funcionario.nome  AS nome_do_funcionario, projeto.brevedescricao AS descricao_do_projeto, COUNT(participacaoprojeto.id) as numero_de_participacoes
     FROM participacaoprojeto JOIN funcionario ON participacaoprojeto.codfun = funcionario.id JOIN projeto ON participacaoprojeto.codproj = projeto.id
         WHERE participacaoprojeto.datahorainicio > '2000-01-01 00:00:00' AND funcionario.salario > 10000 AND projeto.datahorainicio > '1990-01-01 00:00:00' GROUP BY projeto.id, funcionario.id;
+
+-- Quinta. Retorna o id e o nome dos funcionários que não são donos de tarefas.
+    -- not in
+SELECT id, nome FROM funcionario WHERE TRUE NOT IN (SELECT count(*) > 0 FROM tarefa WHERE tarefa.codfundono IN (funcionario.id) GROUP BY tarefa.codfundono);
+    -- not exists
+SELECT id, nome FROM funcionario WHERE NOT EXISTS (SELECT count(*) FROM tarefa WHERE tarefa.codfundono IN (funcionario.id) GROUP BY tarefa.codfundono);

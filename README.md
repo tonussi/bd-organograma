@@ -88,10 +88,10 @@ SELECT deve possuir pelo menos um atributo de cada uma das tabelas relacionadas.
 A cláusula where deve possuir pelo menos três filtros. A consulta deve ser feita
 com operador de JOIN e possuir alguma função de agregação.
 
-* [ ] Crie uma consutla, aninhada, com duas tabelas.
+* [x] Crie uma consutla, aninhada, com duas tabelas.
 
-  * [ ] Usando o NOT IN
-  * [ ] Usando o NOT EXISTS
+  * [x] Usando o NOT IN
+  * [x] Usando o NOT EXISTS
 
 A consulta mais interna deve possuir a cláusula WHERE, que por sua vez deve
 possuir o operador IN. A consula deve possuir alguma função de agregação.
