@@ -30,3 +30,8 @@ SELECT funcionario.nome, tarefa.brevedescricao FROM funcionario, tarefa WHERE  f
 
 -- Terceira. Retorna o nome e a idade do funcionario que apesar de ter tarefas nenhuma delas está no estado 'EM DESENVOLVIMENTO'
 SELECT funcionario.nome, funcionario.idade FROM funcionario JOIN tarefa ON funcionario.id = tarefa.codfun WHERE funcionario.id <> ALL (SELECT codfun FROM tarefa WHERE estado = 'EM DESENVOLVIMENTO' GROUP BY codfun);
+
+-- Quarta. Para o funcionario que tiver participação após '2000-01-01 00:00:00' em um projeto inciado após '1990-01-01 00:00:00' e seu selario for maior que 10000 retornar o seu nome, descrição do projeto e número de participações nesse projeto.
+SELECT funcionario.nome  AS nome_do_funcionario, projeto.brevedescricao AS descricao_do_projeto, COUNT(participacaoprojeto.id) as numero_de_participacoes
+    FROM participacaoprojeto JOIN funcionario ON participacaoprojeto.codfun = funcionario.id JOIN projeto ON participacaoprojeto.codproj = projeto.id
+        WHERE participacaoprojeto.datahorainicio > '2000-01-01 00:00:00' AND funcionario.salario > 10000 AND projeto.datahorainicio > '1990-01-01 00:00:00' GROUP BY projeto.id, funcionario.id;

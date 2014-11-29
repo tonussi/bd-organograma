@@ -82,7 +82,7 @@ possuir três variantes:
 
 * [x] Escreva e crie uma consulta que use <> ALL, e que envolva mais de uma tabela e mais de dois atributos na clásula SELECT.
 
-* [ ] Crie uma consulta que acesse três tabelas sendo que uma delas deve ter
+* [x] Crie uma consulta que acesse três tabelas sendo que uma delas deve ter
 sido criada por causa de um relacionamento nn do modelo conceitual. A cláusula
 SELECT deve possuir pelo menos um atributo de cada uma das tabelas relacionadas.
 A cláusula where deve possuir pelo menos três filtros. A consulta deve ser feita
