@@ -25,10 +25,12 @@ alter table participacaoprojeto add constraint codfun_fkey foreign key (codfun) 
 -- codproj references projeto (id)
 alter table participacaoprojeto add constraint codproj_fkey foreign key (codproj) references projeto (id);
 
+-- codfun references funcionario (id)
+alter table tarefa add constraint codfun_fkey foreign key (codfun) references projeto (id);
 -- codproj references projeto (id)
 alter table tarefa add constraint codproj_fkey foreign key (codproj) references projeto (id);
--- codsubtar references subtarefas (id)
-alter table tarefa add constraint codsubtar_fkey foreign key (codsubtar) references tarefas (id);
+-- codsubtar references tarefa (id)
+alter table tarefa add constraint codsubtar_fkey foreign key (codsubtar) references tarefa (id);
 
 -- codfun references funcionario (id)
 alter table coordenador add constraint codfun_fkey foreign key (codfun) references funcionario (id);
@@ -37,11 +39,6 @@ alter table coordenador add constraint codfun_fkey foreign key (codfun) referenc
 alter table coordenadorprojeto add constraint codcoord_fkey foreign key (codcoord) references coordenador (id);
 -- codproj references projeto (id)
 alter table coordenadorprojeto add constraint codproj_fkey foreign key (codproj) references projeto (id);
-
--- codcoord references coordenador (id)
-alter table tarefa add constraint codcoord_fkey foreign key (codcoord) references coordenador (id);
--- codproj references projeto (id)
-alter table tarefa add constraint codproj_fkey foreign key (codproj) references projeto (id);
 
 -- codfun references funcionario (id)
 alter table programador add constraint codfun_fkey foreign key (codfun) references funcionario (id);
