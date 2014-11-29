@@ -106,7 +106,7 @@ create trigger funcionario_salario before insert or update on funcionario
 -- for table tarefa
 
 create or replace function tarefas8_80() returns trigger as $tarefas8_80$
-  declare diferenca8_80 timestamp without time zone;
+  declare diferenca8_80 integer;
 
   begin
 
@@ -140,9 +140,8 @@ create or replace function tarefas8_80() returns trigger as $tarefas8_80$
       raise exception 'Campo id nao pode ser nulo';
     end if;
 
-
     if diferenca8_80 > 4800 and diferenca8_80 < 480 then
-      raise exception 'Diferenca tem que estar entre 8 hora e 80 horas';
+      raise exception 'Diferenca tem que ser entre 8 horas e 80 horas, inicio: %s, fim: %s', new.datahorafinal, new.datahorainicial;
     end if;
 
     return new;
