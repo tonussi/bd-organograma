@@ -22,9 +22,9 @@ psql -U uname -d dbname -a -f       query.sql # test
 * Referências: `21`
 
 ```sql
-orcamento (id, valor, data)
+orcamento (id, valor, datahoraorcamento)
 material (id, descricao)
-orcamentos_materiais (id, quantidade, preco, #codorc, #codmat)
+orcamentosmateriais (id, quantidade, preco, #codorc, #codmat)
   codorc references orcamento (id)
   codmat references material (id)
 homologado (id, #codass, #codaloc, #codmat)
@@ -32,31 +32,31 @@ homologado (id, #codass, #codaloc, #codmat)
   codaloc references alocacao (id)
   codmat references material (id)
 local (id, andar, setor, numero)
-alocacao (id, data_alocacao, #codlocal, #codhom)
+alocacao (id, datahoraalocacao, #codlocal, #codhom)
   codlocal references local (id)
   codhom references homologado (id)
-assinatura (id, data_assinatura, #codfun, #codhomo)
+assinatura (id, datahoraassinatura, #codfun, #codhomo)
   codfun references funcionario (id)
   codhomo references homologado (id)
-funcionario (id, nome, idade, salario, data_egresso, data_ingresso)
-projeto (id, breve_descricao, data_inicio)
-participacao_projeto (id, data_inicio, data_fim, #codfun, #codproj)
+funcionario (id, nome, idade, salario, dataegresso, dataingresso)
+projeto (id, brevedescricao, datahorainicio)
+participacaoprojeto (id, datahorainicio, datahorafim, #codfun, #codproj)
   codfun references funcionario (id)
   codproj references projeto (id)
-tarefa (id, breve_descricao, estado, prioridade, datahorainicial,
+tarefa (id, brevedescricao, estado, prioridade, datahorainicial,
 datahorafinal, #codproj, #codsubtar, #codfun)
   codfun references funcionario (id)
   codproj references projeto (id)
   codsubtar references tarefas (id)
 coordenador (id, designacao, #codfun)
   codfun references funcionario (id)
-coordenador_projeto (id, #codcoord, #codproj)
+coordenadorprojeto (id, #codcoord, #codproj)
   codcoord references coordenador (id)
   codproj references projeto (id)
 programador (id, #codfun)
   codfun references funcionario (id)
 linguagem (id, nome)
-programador_linguagem (id, dominio, #codprog, #codling)
+programadorlinguagem (id, dominio, #codprog, #codling)
   codprog references programador (id)
   codling references linguagem (id)
 ```
@@ -84,7 +84,7 @@ possuir três variantes:
 * [ ] Escreva e crie uma consulta que use <> ALL, e que envolva mais de uma tabela e mais de dois atributos na clásula SELECT.
 
 * [ ] Crie uma consulta que acesse três tabelas sendo que uma delas deve ter
-sido criada por causa de um relacionamento n_n do modelo conceitual. A cláusula
+sido criada por causa de um relacionamento nn do modelo conceitual. A cláusula
 SELECT deve possuir pelo menos um atributo de cada uma das tabelas relacionadas.
 A cláusula where deve possuir pelo menos três filtros. A consulta deve ser feita
 com operador de JOIN e possuir alguma função de agregação.
