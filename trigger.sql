@@ -62,39 +62,35 @@ create trigger apenas_tarefa_futuras before insert or update on tarefa
 --                       , nome varchar(60) not null check (nome <> '')
 --                       , idade integer not null
 --                       , salario numeric(10,2) not null
---                       , dataegresso timestamp without time zone default agora()
---                       , dataingresso timestamp without time zone default agora()
+--                       , datahoraegresso timestamp without time zone default agora()
+--                       , datahoraingresso timestamp without time zone default agora()
 --                       );
 
 create or replace function funcionario_salario() returns trigger as $funcionario_salario$
   begin
 
     if new.id is null then
-      raise exception 'Campo dataingresso não pode ser nulo';
+      raise exception 'Campo id nao pode ser nulo';
     end if;
 
     if new.nome is null then
-      raise exception 'Campo dataegresso não pode ser nulo';
+      raise exception 'Campo nome nao pode ser nulo';
     end if;
 
     if new.idade is null then
-      raise exception 'Campo salario não pode ser nulo';
+      raise exception 'Campo idade nao pode ser nulo';
     end if;
 
     if new.salario is null then
-      raise exception 'Campo idade não pode ser nulo';
+      raise exception 'Campo salario nao pode ser nulo';
     end if;
 
-    if new.dataegresso is null then
-      raise exception 'Campo nome não pode ser nulo';
-    end if;
-
-    if new.dataingresso is null then
-      raise exception 'Campo id não pode ser nulo';
+    if new.datahoraingresso is null then
+      raise exception 'Campo datahoraingresso nao pode ser nulo';
     end if;
 
     if new.salario < 0 then
-      raise exception 'funcionário % não pode ter salário negativo', new.nome;
+      raise exception 'Campo salario nao pode ser negativo';
     end if;
 
     return new;
@@ -110,11 +106,11 @@ create trigger funcionario_salario before insert or update on funcionario
 -- for table tarefa
 
 create or replace function tarefas8_80() returns trigger as $tarefas8_80$
-  declare diferenca8_80 integer;
+  declare diferenca8_80 timestamp without time zone;
 
   begin
 
-    diferenca8_80 = age(new.datahorafinal::timestamp, new.datahorainicial::timestamp);
+    diferenca8_80 = extract (minute from age(new.datahorafinal::timestamp, new.datahorainicial::timestamp));
 
     if new.id is null then
       raise exception 'Campo codsubtar não pode ser nulo';
@@ -145,7 +141,7 @@ create or replace function tarefas8_80() returns trigger as $tarefas8_80$
     end if;
 
 
-    if diferenca8_80 > 80 then
+    if diferenca8_80 > 4800 and diferenca8_80 < 480 then
       raise exception 'A diferença está maior que 80, o que não pode ocorrer';
     end if;
 
