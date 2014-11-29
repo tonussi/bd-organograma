@@ -3,7 +3,7 @@ create table orcamento  ( id integer primary key
                         , data timestamp without time zone default agora()
                         );
 
-create table material ( id integer
+create table material ( id integer primary key
                       , brevedescricao varchar(60) not null check (brevedescricao <> '')
                       );
 
@@ -15,9 +15,9 @@ create table orcamentosmateriais ( id integer primary key
                                  );
 
   -- codorc references orcamento (id)
-alter table orcamentosmateriais add constraint codorc_fkey foreign key (codorc) references orcamento (id);
+-- alter table orcamentosmateriais add constraint codorc_fkey foreign key (codorc) references orcamento (id);
   -- codmat references material (id)
-alter table orcamentosmateriais add constraint codmat_fkey foreign key (codmat) references material (id);
+-- alter table orcamentosmateriais add constraint codmat_fkey foreign key (codmat) references material (id);
 
 create table homologado ( id integer primary key
                         , codass integer
@@ -26,11 +26,11 @@ create table homologado ( id integer primary key
                         );
 
   -- codass references assinatura (id)
-alter table orcamentosmateriais add constraint codass_fkey foreign key (codass) references assinatura (id);
+-- alter table homologado add constraint codass_fkey foreign key (codass) references assinatura (id);
   -- codaloc references alocacao (id)
-alter table orcamentosmateriais add constraint codaloc_fkey foreign key (codaloc) references alocacao (id);
+-- alter table homologado add constraint codaloc_fkey foreign key (codaloc) references alocacao (id);
   -- codmat references material (id)
-alter table orcamentosmateriais add constraint codmat_fkey foreign key (codmat) references material (id);
+-- alter table homologado add constraint codmat_fkey foreign key (codmat) references material (id);
 
 create table local ( id integer primary key
                    , andar integer not null
@@ -49,9 +49,9 @@ create table alocacao ( id integer primary key
                       );
 
   -- codlocal references local (id)
-alter table alocacao add constraint codlocal_fkey foreign key (codlocal) references local (id);
+-- alter table alocacao add constraint codlocal_fkey foreign key (codlocal) references local (id);
   -- codhom references homologado (id)
-alter table alocacao add constraint codhom_fkey foreign key (codhom) references homologado (id);
+-- alter table alocacao add constraint codhom_fkey foreign key (codhom) references homologado (id);
 
 create table assinatura ( id integer primary key
                         , data_assinatura timestamp without time zone default agora()
@@ -61,9 +61,9 @@ create table assinatura ( id integer primary key
 
 
   -- codfun references funcionario (id)
-alter table assinatura add constraint codfun_fkey foreign key (codfun) references funcionario (id);
+-- alter table assinatura add constraint codfun_fkey foreign key (codfun) references funcionario (id);
   -- codhomo references homologado (id)
-alter table assinatura add constraint codfun_fkey foreign key (codhomo) references homologado (id);
+-- alter table assinatura add constraint codfun_fkey foreign key (codhomo) references homologado (id);
 
 create table funcionario ( id integer primary key
                          , nome varchar(60) not null check (nome <> '')
@@ -93,9 +93,9 @@ create table participacaoprojeto  ( id integer primary key
                                   );
 
   -- codfun references funcionario (id)
-alter table participacaoprojeto add constraint codfun_fkey foreign key (codfun) references funcionario (id);
+-- alter table participacaoprojeto add constraint codfun_fkey foreign key (codfun) references funcionario (id);
   -- codproj references projeto (id)
-alter table participacaoprojeto add constraint codproj_fkey foreign key (codproj) references projeto (id);
+-- alter table participacaoprojeto add constraint codproj_fkey foreign key (codproj) references projeto (id);
 
 create table tarefa ( id integer primary key
                     , brevedescricao varchar(60)
@@ -104,21 +104,16 @@ create table tarefa ( id integer primary key
                     , datahorainicial timestamp without time zone default agora()
                     , datahorafinal timestamp without time zone default agora()
                     , codsubtar integer
+                    , codproj integer
+                    , codcoord integer
                     );
 
   -- tarefa weak entity, must have the id of project identifying tarefa
 
   -- codproj references projeto (id)
-alter table tarefa add constraint codproj_fkey foreign key (codproj) references projeto (id);
-  -- codsubtar references subtarefas (id)
-alter table tarefa add constraint codsubtar_fkey foreign key (codsubtar) references tarefas (id);
-
--- create table subtarefas ( id integer primary key
---                         , brevedescricao varchar(60) not null check (designacao <> '')
---                         , estado varchar(60) not null check (designacao <> '')
---                         , prioridade varchar(60) not null check (designacao <> '')
---                         , tempogasto integer not null
---                         );
+-- alter table tarefa add constraint codproj_fkey foreign key (codproj) references projeto (id);
+  -- codsubtar references tarefa (id)
+-- alter table tarefa add constraint codsubtar_fkey foreign key (codsubtar) references tarefa (id);
 
   -- codtar references tarefa (id, codproj)
 -- alter table tarefa add constraint codtar_fkey foreign key (codtarfk) references tarefa (id, codproj);
@@ -130,16 +125,17 @@ create table coordenador ( id integer primary key
                          );
 
   -- codfun references funcionario (id)
-alter table coordenador add constraint codfun_fkey foreign key (codfun) references funcionario (id);
+-- alter table coordenador add constraint codfun_fkey foreign key (codfun) references funcionario (id);
 
-  -- create table coordenadorprojeto ( codcoord
-  --                                 , codproj
-  --                                 );
+create table coordenadorprojeto ( id integer primary key
+                                , codcoord integer
+                                , codproj integer
+                                );
 
   -- codcoord references coordenador (id)
-alter table tarefa add constraint codcoord_fkey foreign key (codcoord) references coordenador (id);
+-- alter table coordenadorprojeto add constraint codcoord_fkey foreign key (codcoord) references coordenador (id);
   -- codproj references projeto (id)
-alter table tarefa add constraint codproj_fkey foreign key (codproj) references projeto (id);
+-- alter table coordenadorprojeto add constraint codproj_fkey foreign key (codproj) references projeto (id);
 
 create table programador ( id integer primary key
                          , rank varchar(60) not null check (rank <> '')
@@ -147,7 +143,7 @@ create table programador ( id integer primary key
                          );
 
   -- codfun references funcionario (id)
-alter table programador add constraint codfun_fkey foreign key (codfun) references funcionario (id);
+-- alter table programador add constraint codfun_fkey foreign key (codfun) references funcionario (id);
 
 create table linguagem ( id integer primary key
                        , nome varchar(60) not null check (nome <> '')
@@ -160,6 +156,6 @@ create table programadorlinguagem ( id integer primary key
                                   );
 
   -- codprog references programador (id)
-alter table programadorlinguagem add constraint codprog_fkey foreign key (codprog) references programador (id, codfun);
+-- alter table programadorlinguagem add constraint codprog_fkey foreign key (codprog) references programador (id);
   -- codling references linguagem (id)
-alter table programadorlinguagem add constraint codling_fkey foreign key (codling) references linguagem (id);
+-- alter table programadorlinguagem add constraint codling_fkey foreign key (codling) references linguagem (id);
