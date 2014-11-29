@@ -9,16 +9,18 @@ alter table homologado add constraint codass_fkey foreign key (codass) reference
 alter table homologado add constraint codaloc_fkey foreign key (codaloc) references alocacao (id);
 -- codmat references material (id)
 alter table homologado add constraint codmat_fkey foreign key (codmat) references material (id);
+-- codcoord references coordenador (id)
+alter table homologado add constraint codcoord_fkey foreign key (codcoord) references coordenador (id);
 
 -- codlocal references local (id)
 alter table alocacao add constraint codlocal_fkey foreign key (codlocal) references local (id);
 -- codhom references homologado (id)
-alter table alocacao add constraint codhom_fkey foreign key (codhom) references homologado (id);
+-- alter table alocacao add constraint codhom_fkey foreign key (codhom) references homologado (id);
 
 -- codfun references funcionario (id)
 alter table assinatura add constraint codfun_fkey foreign key (codfun) references funcionario (id);
 -- codhomo references homologado (id)
-alter table assinatura add constraint codhomo_fkey foreign key (codhomo) references homologado (id);
+-- alter table assinatura add constraint codhomo_fkey foreign key (codhomo) references homologado (id);
 
 -- codfun references funcionario (id)
 alter table participacaoprojeto add constraint codfun_fkey foreign key (codfun) references funcionario (id);
