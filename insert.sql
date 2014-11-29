@@ -10,25 +10,21 @@ insert into orcamentosmateriais (id, quantidade, preco, codorc, codmat) values (
 insert into orcamentosmateriais (id, quantidade, preco, codorc, codmat) values (2, 20, 2000, 2, 2);
 insert into orcamentosmateriais (id, quantidade, preco, codorc, codmat) values (3, 20, 2000, 3, 3);
 
-insert into homologado (id, codass, codaloc, codmat) values (1, 1, 1, 1);
-insert into homologado (id, codass, codaloc, codmat) values (2, 2, 2, 2);
-insert into homologado (id, codass, codaloc, codmat) values (3, 3, 3, 3);
+insert into local (id, andar, setor, sala) values (1, 6, 'S1', 18);
+insert into local (id, andar, setor, sala) values (2, 3, 'S2', 22);
+insert into local (id, andar, setor, sala) values (3, 2, 'S3', 13);
 
-insert into local (id, andar, setor, numero) values (1, 6, 'S1', 18);
-insert into local (id, andar, setor, numero) values (2, 3, 'S2', 22);
-insert into local (id, andar, setor, numero) values (3, 2, 'S3', 13);
+insert into funcionario (id, nome, idade, salario, datahoraegresso, datahoraingresso) values (1, 'nome funcionario 1', 32, 9510.60, null, '2005-9-19 16:30:10');
+insert into funcionario (id, nome, idade, salario, datahoraegresso, datahoraingresso) values (2, 'nome funcionario 2', 36, 9510.60, null, '2005-9-19 16:30:10');
+insert into funcionario (id, nome, idade, salario, datahoraegresso, datahoraingresso) values (3, 'nome funcionario 3', 40, 9510.60, null, '2005-9-19 16:30:10');
 
-insert into alocacao (id, datahoraalocacao, codlocal, codhom) values (1, '2014-10-1 14:10:34', 1, 1);
-insert into alocacao (id, datahoraalocacao, codlocal, codhom) values (2, '2014-10-1 14:10:34', 2, 2);
-insert into alocacao (id, datahoraalocacao, codlocal, codhom) values (3, '2014-10-1 14:10:34', 3, 3);
+insert into assinatura (id, datahoraassinatura, codfun) values (1, '2014-4-5 08:20:33', 1);
+insert into assinatura (id, datahoraassinatura, codfun) values (2, '2014-4-5 08:20:33', 2);
+insert into assinatura (id, datahoraassinatura, codfun) values (3, '2014-4-5 08:20:33', 3);
 
-insert into assinatura (id, datahoraassinatura, codfun, codhomo) values (1, '2014-4-5 08:20:33', 1, 1);
-insert into assinatura (id, datahoraassinatura, codfun, codhomo) values (2, '2014-4-5 08:20:33', 2, 2);
-insert into assinatura (id, datahoraassinatura, codfun, codhomo) values (3, '2014-4-5 08:20:33', 3, 3);
-
-insert into funcionario (id, nome, idade, salario, datahoraegresso, datahoraingresso) values (1, 'Helana', 30, 8000, null, '2005-9-19 16:30:10');
-insert into funcionario (id, nome, idade, salario, datahoraegresso, datahoraingresso) values (2, 'Amanda', 36, 8000, null, '2005-9-19 16:30:10');
-insert into funcionario (id, nome, idade, salario, datahoraegresso, datahoraingresso) values (3, 'Sharya', 40, 8000, null, '2005-9-19 16:30:10');
+insert into alocacao (id, datahoraalocacao, codlocal) values (1, '2014-10-1 14:10:34', 1);
+insert into alocacao (id, datahoraalocacao, codlocal) values (2, '2014-10-1 14:10:34', 2);
+insert into alocacao (id, datahoraalocacao, codlocal) values (3, '2014-10-1 14:10:34', 3);
 
 insert into projeto (id, brevedescricao, datahorainicio, datahorafim) values (1, 'breve descricao projeto 1', '2014-5-5 15:10:10', null);
 insert into projeto (id, brevedescricao, datahorainicio, datahorafim) values (2, 'breve descricao projeto 2', '2014-5-5 15:10:10', null);
@@ -45,6 +41,10 @@ insert into tarefa (id, brevedescricao, estado, prioridade, datahorainicial, dat
 insert into coordenador (id, designacao, codfun) values (1, 'coordenador 1', 1);
 insert into coordenador (id, designacao, codfun) values (2, 'coordenador 2', 2);
 insert into coordenador (id, designacao, codfun) values (3, 'coordenador 3', 3);
+
+insert into homologado (id, codass, codaloc, codmat, codcoord) values (1, 1, 1, 1, 1);
+insert into homologado (id, codass, codaloc, codmat, codcoord) values (2, 2, 2, 2, 2);
+insert into homologado (id, codass, codaloc, codmat, codcoord) values (3, 3, 3, 3, 3);
 
 insert into coordenadorprojeto (id, codcoord, codproj) values (1, 1, 1);
 insert into coordenadorprojeto (id, codcoord, codproj) values (2, 2, 2);
