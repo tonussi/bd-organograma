@@ -23,6 +23,11 @@ alter table assinatura add constraint codfun_fkey foreign key (codfun) reference
 -- alter table assinatura add constraint codhomo_fkey foreign key (codhomo) references homologado (id);
 
 -- codfun references funcionario (id)
+alter table funcionariolocal add constraint codfun_fkey foreign key (codfun) references funcionario (id);
+-- codlocal references local (id)
+alter table funcionariolocal add constraint codlocal_fkey foreign key (codlocal) references local (id);
+
+-- codfun references funcionario (id)
 alter table participacaoprojeto add constraint codfun_fkey foreign key (codfun) references funcionario (id);
 -- codproj references projeto (id)
 alter table participacaoprojeto add constraint codproj_fkey foreign key (codproj) references projeto (id);
