@@ -164,3 +164,8 @@ create table programadorlinguagem ( id integer primary key
 -- alter table programadorlinguagem add constraint codprog_fkey foreign key (codprog) references programador (id);
   -- codling references linguagem (id)
 -- alter table programadorlinguagem add constraint codling_fkey foreign key (codling) references linguagem (id);
+
+create table funcionariolocal ( id integer primary key
+                                  , codfun integer references funcionario (id)
+                                  , codlocal integer references local (id)
+                                  );
