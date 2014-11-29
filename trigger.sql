@@ -110,7 +110,9 @@ create or replace function tarefas8_80() returns trigger as $tarefas8_80$
 
   begin
 
-    diferenca8_80 = extract (minute from age(new.datahorafinal::timestamp, new.datahorainicial::timestamp));
+    diferenca8_80 = extract(hour from age(new.datahorafinal, new.datahorainicial))
+                    * 60 + extract(minute from age(new.datahorafinal, new.datahorainicial))
+                    + extract(second from age(new.datahorafinal, new.datahorainicial))/ 60;
 
     if new.id is null then
       raise exception 'Campo codsubtar nao pode ser nulo';
