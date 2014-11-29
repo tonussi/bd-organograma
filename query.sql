@@ -41,3 +41,16 @@ SELECT funcionario.nome  AS nome_do_funcionario, projeto.brevedescricao AS descr
 SELECT id, nome FROM funcionario WHERE TRUE NOT IN (SELECT count(*) > 0 FROM tarefa WHERE tarefa.codfundono IN (funcionario.id) GROUP BY tarefa.codfundono);
     -- not exists
 SELECT id, nome FROM funcionario WHERE NOT EXISTS (SELECT count(*) FROM tarefa WHERE tarefa.codfundono IN (funcionario.id) GROUP BY tarefa.codfundono);
+
+-- Setima. Recupera contagem de funcionarios e contagem de projetos dos quais
+-- funcionarios participaram e sao projetos apos 2002 para funcionario que
+-- entreram depois de 2001 e estao ate 2005.
+
+select count(funcionario.id), count(participacaoprojeto.id)
+  from funcionario, participacaoprojeto, projeto
+    where funcionario.datahoraingresso > '2001-10-10'
+       and funcionario.datahoraingresso < '2005-10-10'
+          and participacaoprojeto.codfun = funcionario.id
+            and projeto.datahorainicio > '2002-1-1'
+              group by funcionario.id
+                order by funcionario.id;
