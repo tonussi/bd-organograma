@@ -18,6 +18,10 @@ insert into funcionario (id, nome, idade, salario, datahoraegresso, datahoraingr
 insert into funcionario (id, nome, idade, salario, datahoraegresso, datahoraingresso) values (2, 'nome funcionario 2', 36, 9510.60, null, '2005-9-19 16:30:10');
 insert into funcionario (id, nome, idade, salario, datahoraegresso, datahoraingresso) values (3, 'nome funcionario 3', 40, 9510.60, null, '2005-9-19 16:30:10');
 
+insert into funcionariolocal (id, codfun, codlocal) values (1, 1, 1);
+insert into funcionariolocal (id, codfun, codlocal) values (2, 2, 2);
+insert into funcionariolocal (id, codfun, codlocal) values (3, 3, 3);
+
 insert into assinatura (id, datahoraassinatura, codfun) values (1, '2014-4-5 08:20:33', 1);
 insert into assinatura (id, datahoraassinatura, codfun) values (2, '2014-4-5 08:20:33', 2);
 insert into assinatura (id, datahoraassinatura, codfun) values (3, '2014-4-5 08:20:33', 3);
