@@ -34,7 +34,7 @@ create table homologado ( id integer primary key
 
 create table local ( id integer primary key
                    , andar integer not null
-                   , setor integer not null
+                   , setor varchar(2) not null check (setor <> '')
                    , sala integer not null
                    );
 
