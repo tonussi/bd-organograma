@@ -9,7 +9,7 @@
 --                  , codsubtar integer
 --                  );
 
-create or replace function apenas_tarefa_futuras() returns trigger as $$
+create or replace function apenas_tarefa_futuras() returns trigger as $apenas_tarefa_futuras$
   begin
 
     if new.id is null then
@@ -51,10 +51,10 @@ create or replace function apenas_tarefa_futuras() returns trigger as $$
     return new;
 
   end;
-$$ language plpgsql;
+$apenas_tarefa_futuras$ language plpgsql;
 
--- create or replace trigger apenas_tarefa_futuras before insert or update on tarefa
---   for each row execute procedure apenas_tarefa_futuras();
+create trigger apenas_tarefa_futuras before insert or update on tarefa
+  for each row execute procedure apenas_tarefa_futuras();
 
 -- trigger 2
 
@@ -66,7 +66,7 @@ $$ language plpgsql;
 --                       , dataingresso timestamp without time zone default agora()
 --                       );
 
-create or replace function funcionario_salario() returns trigger as $$
+create or replace function funcionario_salario() returns trigger as $funcionario_salario$
   begin
 
     if new.id is null then
@@ -100,21 +100,21 @@ create or replace function funcionario_salario() returns trigger as $$
     return new;
 
   end;
-$$ language plpgsql;
+$funcionario_salario$ language plpgsql;
 
--- create or replace trigger funcionario_salario before insert or update on funcionario
---   for each row execute procedure funcionario_salario();
+create trigger funcionario_salario before insert or update on funcionario
+  for each row execute procedure funcionario_salario();
 
 -- trigger 3
 
 -- for table tarefa
 
-create or replace function tarefas8_80() returns trigger as $$
+create or replace function tarefas8_80() returns trigger as $tarefas8_80$
   declare diferenca8_80 integer;
 
   begin
 
-    set diferenca8_80 select age(new.datahorafinal::timestamp, new.datahorainicial::timestamp);
+    diferenca8_80 = age(new.datahorafinal::timestamp, new.datahorainicial::timestamp);
 
     if new.id is null then
       raise exception 'Campo codsubtar não pode ser nulo';
@@ -152,7 +152,7 @@ create or replace function tarefas8_80() returns trigger as $$
     return new;
 
   end;
-$$ language plpgsql;
+$tarefas8_80$ language plpgsql;
 
--- create or replace trigger tarefas8_80 before insert or update on tarefa
---   for each row execute procedure tarefas8_80();
+create trigger tarefas8_80 before insert or update on tarefa
+  for each row execute procedure tarefas8_80();
