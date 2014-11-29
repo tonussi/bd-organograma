@@ -69,7 +69,7 @@ INE5423-05208 (20142) - Banco de Dados I
 Crie consultas em SQL, seguindo as seguites instruções (não esqueça de fornecer
 o enunciado de sua consulta):
 
-1. [ ] Crie uma consulta que teste duas colunas no WHERE, mas que selecione
+1. [x] Crie uma consulta que teste duas colunas no WHERE, mas que selecione
 outras duas. A cláusula WHERE deve possuir o operador BETWEEN.
 
 * [ ] Crie uma consulta que acesse duas tabelas. A cláusula SELECT deve possuir

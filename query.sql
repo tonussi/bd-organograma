@@ -17,3 +17,7 @@ select * from coordenadorprojeto; -- (#codCoord, #codProj)
 select * from programador; -- (id, #codFun)
 select * from linguagem; -- (id, nome)
 select * from programadorlinguagem; -- (id, dominio, #codProg, #codLing)
+
+
+-- Primeira. Retorna a descrição e o estado das tarefas de prioridade alta que foram iniciadas no período matutino, ou seja, das 8h às 12h.
+SELECT tarefa.brevedescricao, tarefa.estado FROM tarefa WHERE tarefa.prioridade = 'Alta' AND EXTRACT(hour FROM tarefa.datahorainicial) BETWEEN 8 AND 12;
