@@ -20,10 +20,10 @@ select * from programadorlinguagem; -- (id, dominio, #codProg, #codLing)
 
 
 -- Primeira. Retorna a descrição e o estado das tarefas de prioridade alta que foram iniciadas no período matutino, ou seja, das 8h às 12h.
-SELECT tarefa.brevedescricao, tarefa.estado FROM tarefa WHERE tarefa.prioridade = 'Alta' AND EXTRACT(hour FROM tarefa.datahorainicial) BETWEEN 8 AND 12;
+SELECT tarefa.brevedescricao, tarefa.estado FROM tarefa WHERE tarefa.prioridade = 'ALTA' AND EXTRACT(hour FROM tarefa.datahorainicial) BETWEEN 8 AND 12;
 
---Segunda. Retorna o nome do funcionario e a descrições das suas tarefas que estejam no estado 'Aguardando Desenvolvimento' e tenham prioridade 'Alta' ou 'Normal'
+--Segunda. Retorna o nome do funcionario e a descrições das suas tarefas que estejam no estado 'Aguardando Desenvolvimento' e tenham prioridade 'ALTA' ou 'NORMAL'
     -- join
-SELECT funcionario.nome, tarefa.brevedescricao FROM funcionario JOIN tarefa ON funcionario.id = tarefa.codfun WHERE tarefa.estado = 'Aguardando Desenvolvimento' AND (tarefa.prioridade = 'ALTA' OR tarefa.prioridade = 'NORMAL') GROUP BY funcionario.nome, tarefa.brevedescricao;
+SELECT funcionario.nome, tarefa.brevedescricao FROM funcionario JOIN tarefa ON funcionario.id = tarefa.codfun WHERE tarefa.estado = 'AGUARDANDO DESENVOLVIMENTO' AND (tarefa.prioridade = 'ALTA' OR tarefa.prioridade = 'NORMAL') GROUP BY funcionario.nome, tarefa.brevedescricao;
     -- produto cartesiano
-SELECT funcionario.nome, tarefa.brevedescricao FROM funcionario, tarefa WHERE  funcionario.id = tarefa.codfun AND tarefa.estado = 'Aguardando Desenvolvimento' AND (tarefa.prioridade = 'ALTA' OR tarefa.prioridade = 'NORMAL') GROUP BY funcionario.nome, tarefa.brevedescricao;;
+SELECT funcionario.nome, tarefa.brevedescricao FROM funcionario, tarefa WHERE  funcionario.id = tarefa.codfun AND tarefa.estado = 'AGUARDANDO DESENVOLVIMENTO' AND (tarefa.prioridade = 'ALTA' OR tarefa.prioridade = 'NORMAL') GROUP BY funcionario.nome, tarefa.brevedescricao;
