@@ -27,3 +27,6 @@ SELECT tarefa.brevedescricao, tarefa.estado FROM tarefa WHERE tarefa.prioridade 
 SELECT funcionario.nome, tarefa.brevedescricao FROM funcionario JOIN tarefa ON funcionario.id = tarefa.codfun WHERE tarefa.estado = 'AGUARDANDO DESENVOLVIMENTO' AND (tarefa.prioridade = 'ALTA' OR tarefa.prioridade = 'NORMAL') GROUP BY funcionario.nome, tarefa.brevedescricao;
     -- produto cartesiano
 SELECT funcionario.nome, tarefa.brevedescricao FROM funcionario, tarefa WHERE  funcionario.id = tarefa.codfun AND tarefa.estado = 'AGUARDANDO DESENVOLVIMENTO' AND (tarefa.prioridade = 'ALTA' OR tarefa.prioridade = 'NORMAL') GROUP BY funcionario.nome, tarefa.brevedescricao;
+
+-- Terceira. Retorna o nome e a idade do funcionario que apesar de ter tarefas nenhuma delas está no estado 'EM DESENVOLVIMENTO'
+SELECT funcionario.nome, funcionario.idade FROM funcionario JOIN tarefa ON funcionario.id = tarefa.codfun WHERE funcionario.id <> ALL (SELECT codfun FROM tarefa WHERE estado = 'EM DESENVOLVIMENTO' GROUP BY codfun);
