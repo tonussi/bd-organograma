@@ -13,39 +13,39 @@ create or replace function apenas_tarefa_futuras() returns trigger as $apenas_ta
   begin
 
     if new.id is null then
-      raise exception 'Campo id não pode ser nulo';
+      raise exception 'Campo id nao pode ser nulo';
     end if;
 
     if new.brevedescricao is null then
-      raise exception 'Campo brevedescricao não pode ser nulo';
+      raise exception 'Campo brevedescricao nao pode ser nulo';
     end if;
 
     if new.estado is null then
-      raise exception 'Campo estado não pode ser nulo';
+      raise exception 'Campo estado nao pode ser nulo';
     end if;
 
     if new.prioridade is null then
-      raise exception 'Campo prioridade não pode ser nulo';
+      raise exception 'Campo prioridade nao pode ser nulo';
     end if;
 
     if new.datahorainicial is null then
-      raise exception 'Campo datahorainicial não pode ser nulo';
+      raise exception 'Campo datahorainicial nao pode ser nulo';
     end if;
 
     if new.datahorafinal is null then
-      raise exception 'Campo datahorafinal não pode ser nulo';
+      raise exception 'Campo datahorafinal nao pode ser nulo';
     end if;
 
     if new.codsubtar is null then
-      raise exception 'Campo codsubtar não pode ser nulo';
+      raise exception 'Campo codsubtar nao pode ser nulo';
     end if;
 
     if new.datahorainicial < agora() then
-      raise exception 'Campo datahorainicial não pode ser nulo';
+      raise exception 'Campo datahorainicial nao pode ser nulo';
     end if;
 
     if new.datahorafinal < agora() then
-      raise exception 'Campo datahorafinal não pode ser nulo';
+      raise exception 'Campo datahorafinal nao pode ser nulo';
     end if;
 
     return new;
@@ -113,36 +113,36 @@ create or replace function tarefas8_80() returns trigger as $tarefas8_80$
     diferenca8_80 = extract (minute from age(new.datahorafinal::timestamp, new.datahorainicial::timestamp));
 
     if new.id is null then
-      raise exception 'Campo codsubtar não pode ser nulo';
+      raise exception 'Campo codsubtar nao pode ser nulo';
     end if;
 
     if new.brevedescricao is null then
-      raise exception 'Campo datahorafinal não pode ser nulo';
+      raise exception 'Campo datahorafinal nao pode ser nulo';
     end if;
 
     if new.estado is null then
-      raise exception 'Campo datahorainicial não pode ser nulo';
+      raise exception 'Campo datahorainicial nao pode ser nulo';
     end if;
 
     if new.prioridade is null then
-      raise exception 'Campo prioridade não pode ser nulo';
+      raise exception 'Campo prioridade nao pode ser nulo';
     end if;
 
     if new.datahorainicial is null then
-      raise exception 'Campo estado não pode ser nulo';
+      raise exception 'Campo estado nao pode ser nulo';
     end if;
 
     if new.datahorafinal is null then
-      raise exception 'Campo brevedescricao não pode ser nulo';
+      raise exception 'Campo brevedescricao nao pode ser nulo';
     end if;
 
     if new.codsubtar is null then
-      raise exception 'Campo id não pode ser nulo';
+      raise exception 'Campo id nao pode ser nulo';
     end if;
 
 
     if diferenca8_80 > 4800 and diferenca8_80 < 480 then
-      raise exception 'A diferença está maior que 80, o que não pode ocorrer';
+      raise exception 'Diferenca tem que estar entre 8 hora e 80 horas';
     end if;
 
     return new;
