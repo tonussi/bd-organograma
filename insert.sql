@@ -30,13 +30,13 @@ insert into alocacao (id, datahoraalocacao, codlocal) values (1, '2014-10-1 14:1
 insert into alocacao (id, datahoraalocacao, codlocal) values (2, '2014-10-1 14:10:34', 2);
 insert into alocacao (id, datahoraalocacao, codlocal) values (3, '2014-10-1 14:10:34', 3);
 
-insert into projeto (id, brevedescricao, datahorainicio, datahorafim) values (1, 'breve descricao projeto 1', '2014-5-5 15:10:10', null);
-insert into projeto (id, brevedescricao, datahorainicio, datahorafim) values (2, 'breve descricao projeto 2', '2014-5-5 15:10:10', null);
-insert into projeto (id, brevedescricao, datahorainicio, datahorafim) values (3, 'breve descricao projeto 3', '2014-5-5 15:10:10', null);
+insert into projeto (id, brevedescricao, datahorainicio, datahorafim) values (1, 'breve descricao projeto 1', '2013-1-1 8:00:00', '2015-1-1 18:00:00');
+insert into projeto (id, brevedescricao, datahorainicio, datahorafim) values (2, 'breve descricao projeto 2', '2013-1-1 8:00:00', '2015-1-1 18:00:00');
+insert into projeto (id, brevedescricao, datahorainicio, datahorafim) values (3, 'breve descricao projeto 3', '2013-1-1 8:00:00', '2015-1-1 18:00:00');
 
-insert into participacaoprojeto (id, datahorainicio, datahorafim, codfun, codproj) values (1, '2014-5-6 10:20:30', null, 1, 1);
-insert into participacaoprojeto (id, datahorainicio, datahorafim, codfun, codproj) values (2, '2014-5-6 10:25:30', null, 2, 2);
-insert into participacaoprojeto (id, datahorainicio, datahorafim, codfun, codproj) values (3, '2014-5-6 10:35:30', null, 3, 3);
+insert into participacaoprojeto (id, datahorainicio, datahorafim, codfun, codproj) values (1, '2013-2-2 10:20:30', '2014-10-10 16:00:00', 1, 1);
+insert into participacaoprojeto (id, datahorainicio, datahorafim, codfun, codproj) values (2, '2013-2-2 10:25:30', '2014-10-10 16:00:00', 2, 2);
+insert into participacaoprojeto (id, datahorainicio, datahorafim, codfun, codproj) values (3, '2013-2-2 10:35:30', '2014-10-10 16:00:00', 3, 3);
 
 insert into tarefa (id, brevedescricao, estado, prioridade, datahorainicial, datahorafinal, codproj, codsubtar) values (1, 'breve descricao tarefa 1', 'AGUARDANDO DESENVOLVIMENTO', 'ALTA', '2015-2-10 11:10:30', '2015-2-10 15:10:30', 1, 1);
 insert into tarefa (id, brevedescricao, estado, prioridade, datahorainicial, datahorafinal, codproj, codsubtar) values (2, 'breve descricao tarefa 2', 'EM DESENVOLVIMENTO', 'ALTA', '2015-2-10 11:10:30', '2015-2-10 15:10:30', 2, 2);
