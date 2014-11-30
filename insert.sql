@@ -46,9 +46,9 @@ insert into participacaotarefa (id, codfun, codtar, codsubtar) values (1, 1, 1, 
 insert into participacaotarefa (id, codfun, codtar, codsubtar) values (2, 2, 2, 2);
 insert into participacaotarefa (id, codfun, codtar, codsubtar) values (3, 3, 3, 3);
 
-insert into coordenador (id, designacao, codfun) values (1, 'coordenador 1', 1);
-insert into coordenador (id, designacao, codfun) values (2, 'coordenador 2', 2);
-insert into coordenador (id, designacao, codfun) values (3, 'coordenador 3', 3);
+insert into coordenador (id, designacao, codfun) values (1, 'D1', 1);
+insert into coordenador (id, designacao, codfun) values (2, 'D2', 2);
+insert into coordenador (id, designacao, codfun) values (3, 'D3', 3);
 
 insert into homologado (id, codass, codaloc, codmat, codcoord) values (1, 1, 1, 1, 1);
 insert into homologado (id, codass, codaloc, codmat, codcoord) values (2, 2, 2, 2, 2);
@@ -58,13 +58,13 @@ insert into coordenadorprojeto (id, codcoord, codproj) values (1, 1, 1);
 insert into coordenadorprojeto (id, codcoord, codproj) values (2, 2, 2);
 insert into coordenadorprojeto (id, codcoord, codproj) values (3, 3, 3);
 
-insert into programador (id, rank, codfun) values (1, 'E1', 1);
-insert into programador (id, rank, codfun) values (2, 'E1', 2);
-insert into programador (id, rank, codfun) values (3, 'E1', 3);
+insert into programador (id, rank, codfun) values (1, 'R1', 1);
+insert into programador (id, rank, codfun) values (2, 'R1', 2);
+insert into programador (id, rank, codfun) values (3, 'R1', 3);
 
-insert into linguagem (id, nome) values (1, 'linguagem 1');
-insert into linguagem (id, nome) values (2, 'linguagem 2');
-insert into linguagem (id, nome) values (3, 'linguagem 3');
+insert into linguagem (id, nome) values (1, 'PYTHON');
+insert into linguagem (id, nome) values (2, 'JAVASCRIPT');
+insert into linguagem (id, nome) values (3, 'CPP');
 
 insert into programadorlinguagem (id, dominio, codprog, codling) values (1, 'dominio 1', 1, 1);
 insert into programadorlinguagem (id, dominio, codprog, codling) values (2, 'dominio 2', 2, 2);
