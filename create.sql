@@ -116,22 +116,34 @@ create table tarefa ( id integer primary key
                     , datahorafinal timestamp without time zone
                     , codsubtar integer
                     , codproj integer
-                    , codfun integer
                     , codfundono integer
                     );
 
   -- tarefa weak entity, must have the id of project identifying tarefa
+
   -- codfun references funcionario (id)
 -- alter table tarefa add constraint codfun_fkey foreign key (codfun) references projeto (id);
   -- codproj references projeto (id)
 -- alter table tarefa add constraint codproj_fkey foreign key (codproj) references projeto (id);
   -- codsubtar references tarefa (id)
 -- alter table tarefa add constraint codsubtar_fkey foreign key (codsubtar) references tarefa (id);
+  -- codfundono references funcionario (id)
+-- alter table tarefa add constraint codfundono_fkey foreign key (codfundono) references funcionario (id);
 
-  -- codtar references tarefa (id, codproj)
--- alter table tarefa add constraint codtar_fkey foreign key (codtarfk) references tarefa (id, codproj);
 
--- alter table tarefa add constraint codfundono_fkey foreign key (codfundono) references projeto (id);
+create table participacaotarefa  ( id integer primary key
+                                 , codfun integer
+                                 , codtar integer
+                                 , codsubtar integer
+                                 );
+
+  -- codsubtar references tarefa (id)
+-- alter table participacaotarefa add constraint codsubtar_fkey foreign key (codsubtar) references tarefa (id);
+  -- codfund references funcionario (id)
+-- alter table participacaotarefa add constraint codfun_fkey foreign key (codfun) references funcionario (id);
+  -- codtar references tarefa (id)
+-- alter table participacaotarefa add constraint codsubtar_fkey foreign key (codsubtar) references tarefa (id);
+
 
 create table coordenador ( id integer primary key
                          , designacao varchar(60) not null check (designacao <> '')
