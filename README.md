@@ -1,3 +1,5 @@
+[![Build Status](http://img.shields.io/travis/tonussi/atelopus-varius.svg?style=flat)](https://travis-ci.org/tonussi/atelopus-varius)
+
 (ง •̀_•́)ง Ordem de execução dos arquivos `.sql`.
 
 ```sh
