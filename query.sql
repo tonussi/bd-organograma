@@ -146,6 +146,7 @@ WHERE  NOT EXISTS (SELECT Count(*)
 -- Setima. Recupera contagem de funcionarios e contagem de projetos dos quais
 -- funcionarios participaram e sao projetos apos 2002 para funcionario que
 -- entreram depois de 2001 e estao ate 2005.
+
 SELECT Count(funcionario.id),
        Count(participacaoprojeto.id)
 FROM   funcionario,
