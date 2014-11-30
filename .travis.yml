@@ -13,9 +13,11 @@ before_script:
   - psql -U postgres -d organograma -a -f insert.sql
   - psql -U postgres -d organograma -a -f query.sql
 
+after_script:
+  - psql -c 'drop database if exists organograma;' -U postgres
+
 before_install:
   - sudo apt-get update
   - sudo apt-get install language-pack-es
   - sudo /etc/init.d/postgresql stop
   - sudo /etc/init.d/postgresql start 9.3
-  - sudo /etc/init.d/postgresql stop
