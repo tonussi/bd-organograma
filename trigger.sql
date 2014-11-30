@@ -1,43 +1,23 @@
 -- trigger 1
 
--- for table tarefa ( id integer primary key
---                  , brevedescricao varchar(60)
---                  , estado varchar(60)
---                  , prioridade varchar(60)
---                  , datahorainicial timestamp without time zone default agora()
---                  , datahorafinal timestamp without time zone default agora()
---                  , codsubtar integer
---                  );
+-- create table tarefa ( id integer primary key
+--                     , brevedescricao varchar(60)
+--                     , estado varchar(60) CHECK (estado IN ('AGUARDANDO DESENVOLVIMENTO', 'EM DESENVOLVIMENTO', 'AGUARDANDO ANALISE', 'EM ANALISE'))
+--                     , prioridade varchar(60) CHECK (prioridade IN ('BAIXA', 'MEDIA', 'ALTA'))
+--                     , datahorainicial timestamp without time zone default agora()
+--                     , datahorafinal timestamp without time zone
+--                     , codsubtar integer
+--                     , codproj integer
+--                     , codfundono integer
+--                     );
+
+-- TODO: tarefas precisam ter datas entre a data do projeto
 
 create or replace function apenas_tarefa_futuras() returns trigger as $apenas_tarefa_futuras$
   begin
 
-    if new.id is null then
-      raise exception 'Campo id nao pode ser nulo';
-    end if;
-
-    if new.brevedescricao is null then
-      raise exception 'Campo brevedescricao nao pode ser nulo';
-    end if;
-
-    if new.estado is null then
-      raise exception 'Campo estado nao pode ser nulo';
-    end if;
-
-    if new.prioridade is null then
-      raise exception 'Campo prioridade nao pode ser nulo';
-    end if;
-
-    if new.datahorainicial is null then
-      raise exception 'Campo datahorainicial nao pode ser nulo';
-    end if;
-
-    if new.datahorafinal is null then
-      raise exception 'Campo datahorafinal nao pode ser nulo';
-    end if;
-
-    if new.codsubtar is null then
-      raise exception 'Campo codsubtar nao pode ser nulo';
+    if new.datahorainicial > new.datahorafinal then
+      raise exception 'Campo datahorainicial tem que ser menor que datahorafinal';
     end if;
 
     if new.datahorainicial < agora() then
@@ -69,26 +49,6 @@ create trigger apenas_tarefa_futuras before insert or update on tarefa
 create or replace function funcionario_salario() returns trigger as $funcionario_salario$
   begin
 
-    if new.id is null then
-      raise exception 'Campo id nao pode ser nulo';
-    end if;
-
-    if new.nome is null then
-      raise exception 'Campo nome nao pode ser nulo';
-    end if;
-
-    if new.idade is null then
-      raise exception 'Campo idade nao pode ser nulo';
-    end if;
-
-    if new.salario is null then
-      raise exception 'Campo salario nao pode ser nulo';
-    end if;
-
-    if new.datahoraingresso is null then
-      raise exception 'Campo datahoraingresso nao pode ser nulo';
-    end if;
-
     if new.salario < 0 then
       raise exception 'Campo salario nao pode ser negativo';
     end if;
@@ -113,34 +73,6 @@ create or replace function tarefas8_80() returns trigger as $tarefas8_80$
     diferenca8_80 = extract(hour from age(new.datahorafinal, new.datahorainicial))
                     * 60 + extract(minute from age(new.datahorafinal, new.datahorainicial))
                     + extract(second from age(new.datahorafinal, new.datahorainicial))/ 60;
-
-    if new.id is null then
-      raise exception 'Campo codsubtar nao pode ser nulo';
-    end if;
-
-    if new.brevedescricao is null then
-      raise exception 'Campo datahorafinal nao pode ser nulo';
-    end if;
-
-    if new.estado is null then
-      raise exception 'Campo datahorainicial nao pode ser nulo';
-    end if;
-
-    if new.prioridade is null then
-      raise exception 'Campo prioridade nao pode ser nulo';
-    end if;
-
-    if new.datahorainicial is null then
-      raise exception 'Campo estado nao pode ser nulo';
-    end if;
-
-    if new.datahorafinal is null then
-      raise exception 'Campo brevedescricao nao pode ser nulo';
-    end if;
-
-    if new.codsubtar is null then
-      raise exception 'Campo id nao pode ser nulo';
-    end if;
 
     if new.datahorafinal < new.datahorainicial then
       raise exception 'Datahorafinal nao pode ser menor que datahorainicial';
