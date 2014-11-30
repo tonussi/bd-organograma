@@ -1,0 +1,11 @@
+addons:
+  postgresql: "9.3"
+before_script:
+  - psql -c 'create database organograma;' -U postgres
+  - psql -c -U postgres -d organograma -a -f   functions.sql
+  - psql -c -U postgres -d organograma -a -f      create.sql
+  - psql -c -U postgres -d organograma -a -f       index.sql
+  - psql -c -U postgres -d organograma -a -f constraints.sql
+  - psql -c -U postgres -d organograma -a -f     trigger.sql
+  - psql -c -U postgres -d organograma -a -f      insert.sql
+  - psql -c -U postgres -d organograma -a -f       query.sql # test
