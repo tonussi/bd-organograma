@@ -4,13 +4,18 @@ addons:
 # database creation
 before_script:
   - psql -c 'create database organograma;' -U postgres
-  - psql -c -U postgres -d organograma -a -f functions.sql
-  - psql -c -U postgres -d organograma -a -f create.sql
-  - psql -c -U postgres -d organograma -a -f index.sql
-  - psql -c -U postgres -d organograma -a -f constraints.sql
-  - psql -c -U postgres -d organograma -a -f trigger.sql
-  - psql -c -U postgres -d organograma -a -f insert.sql
-  - psql -c -U postgres -d organograma -a -f query.sql
+  - psql -U postgres -d organograma -a -f drop.sql
+  - psql -U postgres -d organograma -a -f functions.sql
+  - psql -U postgres -d organograma -a -f create.sql
+  - psql -U postgres -d organograma -a -f index.sql
+  - psql -U postgres -d organograma -a -f constraints.sql
+  - psql -U postgres -d organograma -a -f trigger.sql
+  - psql -U postgres -d organograma -a -f insert.sql
+  - psql -U postgres -d organograma -a -f query.sql
 
-# command to run tests
-script: nosetests --verbose
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install language-pack-es
+  - sudo /etc/init.d/postgresql stop
+  - sudo /etc/init.d/postgresql start 9.3
+  - sudo /etc/init.d/postgresql stop
