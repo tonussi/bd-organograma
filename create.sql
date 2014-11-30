@@ -1,6 +1,6 @@
 create table orcamento  ( id integer primary key
                         , valor numeric(10, 2) not null
-                        , datahoraorcamento timestamp without time zone default agora()
+                        , datahoraorcamento timestamp without time zone not null default agora()
                         );
 
 create table material ( id integer primary key
@@ -46,7 +46,7 @@ create table local ( id integer primary key
 -- alter table local add constraint localizacaounica unique(sala)
 
 create table alocacao ( id integer primary key
-                      , datahoraalocacao timestamp without time zone default agora()
+                      , datahoraalocacao timestamp without time zone not null default agora()
                       , codlocal integer
                       );
 
@@ -56,7 +56,7 @@ create table alocacao ( id integer primary key
 -- alter table alocacao add constraint codhom_fkey foreign key (codhom) references homologado (id);
 
 create table assinatura ( id integer primary key
-                        , datahoraassinatura timestamp without time zone default agora()
+                        , datahoraassinatura timestamp without time zone not null default agora()
                         , codfun integer
                         );
 
@@ -69,7 +69,7 @@ create table funcionario ( id integer primary key
                          , nome varchar(60) not null check (nome <> '')
                          , idade integer not null
                          , salario numeric(10,2) not null
-                         , datahoraingresso timestamp without time zone default agora()
+                         , datahoraingresso timestamp without time zone not null default agora()
                          , datahoraegresso timestamp without time zone
                          );
 
@@ -92,13 +92,13 @@ create table funcionariolocal ( id integer primary key
 
 create table projeto ( id integer primary key
                      , brevedescricao varchar(60) not null
-                     , datahorainicio timestamp without time zone default agora()
-                     , datahorafim timestamp without time zone
+                     , datahorainicio timestamp without time zone not null default agora()
+                     , datahorafim timestamp without time zone not null
                      );
 
 create table participacaoprojeto  ( id integer primary key
-                                  , datahorainicio timestamp without time zone default agora()
-                                  , datahorafim timestamp without time zone
+                                  , datahorainicio timestamp without time zone not null default agora()
+                                  , datahorafim timestamp without time zone not null
                                   , codfun integer
                                   , codproj integer
                                   );
@@ -110,10 +110,17 @@ create table participacaoprojeto  ( id integer primary key
 
 create table tarefa ( id integer primary key
                     , brevedescricao varchar(60)
-                    , estado varchar(60) CHECK (estado IN ('AGUARDANDO DESENVOLVIMENTO', 'EM DESENVOLVIMENTO', 'AGUARDANDO ANALISE', 'EM ANALISE'))
-                    , prioridade varchar(60) CHECK (prioridade IN ('BAIXA', 'MEDIA', 'ALTA'))
-                    , datahorainicial timestamp without time zone default agora()
-                    , datahorafinal timestamp without time zone
+                    , estado varchar(60) check (estado in ( 'AGUARDANDO DESENVOLVIMENTO'
+                                                          , 'EM DESENVOLVIMENTO'
+                                                          , 'AGUARDANDO ANALISE'
+                                                          , 'EM ANALISE'
+                                                          ))
+                    , prioridade varchar(60) check (prioridade in ( 'BAIXA'
+                                                                  , 'MEDIA'
+                                                                  , 'ALTA'
+                                                                  ))
+                    , datahorainicial timestamp without time zone not null default agora()
+                    , datahorafinal timestamp without time zone not null
                     , codsubtar integer
                     , codproj integer
                     , codfundono integer
@@ -146,7 +153,12 @@ create table participacaotarefa  ( id integer primary key
 
 
 create table coordenador ( id integer primary key
-                         , designacao varchar(60) not null check (designacao <> '')
+                         , designacao varchar(60) not null check (designacao in ( 'D1'
+                                                                                , 'D2'
+                                                                                , 'D3'
+                                                                                , 'D4'
+                                                                                , 'D5'
+                                                                                ))
                          , codfun integer
                          );
 
@@ -164,7 +176,10 @@ create table coordenadorprojeto ( id integer primary key
 -- alter table coordenadorprojeto add constraint codproj_fkey foreign key (codproj) references projeto (id);
 
 create table programador ( id integer primary key
-                         , rank varchar(60) not null check (rank <> '')
+                         , rank varchar(60) not null check (rank in ( 'R1'
+                                                                    , 'R2'
+                                                                    , 'R3'
+                                                                    ))
                          , codfun integer
                          );
 
@@ -173,7 +188,17 @@ create table programador ( id integer primary key
 -- alter table programador add constraint codfun_fkey foreign key (codfun) references funcionario (id);
 
 create table linguagem ( id integer primary key
-                       , nome varchar(60) not null check (nome <> '')
+                       , nome varchar(60) not null check (nome in ( 'C'
+                                                                  , 'CPP'
+                                                                  , 'PERL'
+                                                                  , 'RUBY'
+                                                                  , 'JAVA'
+                                                                  , 'SHELL'
+                                                                  , 'PYTHON'
+                                                                  , 'GROOVY'
+                                                                  , 'CLOJURE'
+                                                                  , 'JAVASCRIPT'
+                                                                  ))
                        );
 
 create table programadorlinguagem ( id integer primary key
