@@ -8,4 +8,5 @@ before_script:
   - psql -c -U postgres -d organograma -a -f constraints.sql
   - psql -c -U postgres -d organograma -a -f     trigger.sql
   - psql -c -U postgres -d organograma -a -f      insert.sql
-  - psql -c -U postgres -d organograma -a -f       query.sql # test
+  - psql -c -U postgres -d organograma -a -f       query.sql
+  - psql -c 'drop database if exists organograma;' -U postgres
