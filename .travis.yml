@@ -10,3 +10,4 @@ before_script:
   - psql -c -U postgres -d organograma -a -f      insert.sql
   - psql -c -U postgres -d organograma -a -f       query.sql
   - psql -c 'drop database if exists organograma;' -U postgres
+  - sudo /etc/init.d/postgresql stop
