@@ -111,26 +111,26 @@ create or replace function datahora_participacao_projeto() returns trigger as $d
 
   begin
     tmpdatahorainicio = datahorainicio from projeto p where p.id = new.codproj;
-    tmpdatahorafim = datahorainicio from projeto p where p.id = new.codproj;
+    tmpdatahorafim = datahorafim from projeto p where p.id = new.codproj;
 
     if new.datahorainicio < tmpdatahorainicio then
       raise exception 'Datahorainicio de participacaoprojeto tem que ser maior que datahorainicio do projeto. Obtive: %s < %s', new.datahorainicio, tmpdatahorainicio;
     end if;
 
+    if new.datahorafim < tmpdatahorainicio then
+      raise exception 'Datahorafim de participacaoprojeto tem que ser maior que datahorainicio do projeto. Obtive: %s < %s', new.datahorafim, tmpdatahorainicio;
+    end if;
+
+    if new.datahorainicio > tmpdatahorafim then
+      raise exception 'Datahorainicio de participacaoprojeto tem que ser menor que datahorafim do projeto. Obtive: %s > %s', new.datahorainicio, tmpdatahorafim;
+    end if;
+
     if new.datahorafim > tmpdatahorafim then
-      raise exception 'Datahorafim de participacaoprojeto tem que ser menor ou igual que datahorafim do projeto. Obtive: %s > %s', new.datahorafim, tmpdatahorafim;
+      raise exception 'Datahorafim de participacaoprojeto tem que ser menor que datahorafim do projeto. Obtive: %s > %s', new.datahorafim, tmpdatahorafim;
     end if;
 
-    if new.datahorainicio < new.datahorafim then
-      raise exception 'Datahorainicio de participacaoprojeto tem que ser menor que datahorafim de participacaoprojeto. Obtive: %s > %s', new.datahorainicio, new.datahorafim;
-    end if;
-
-    if new.datahorainicio < tmpdatahorafim then
-      raise exception 'Datahorainicio de participacaoprojeto tem que ser menor que datahorafim do projeto. Obtive: %s < %s', new.datahorainicio, tmpdatahorafim;
-    end if;
-
-    if new.datahorafim > tmpdatahorainicio then
-      raise exception 'Datahorafim de participacaoprojeto tem que ser maior que datahorainicio do projeto. Obtive: %s > %s', new.datahorafim, tmpdatahorainicio;
+    if new.datahorainicio > new.datahorafim then
+      raise exception 'Datahorainicio de participacaoprojeto tem que ser menor que datahorafim de participacaoprojeto. Obtive: %s < %s', new.datahorainicio, new.datahorafim;
     end if;
 
     return new;
