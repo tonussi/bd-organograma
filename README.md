@@ -20,8 +20,8 @@ psql -U uname -d dbname -a -f       query.sql # test
 
 # Esquema conceitual
 
-* Entidades: `16`
-* Referências: `21`
+* Entidades: `18`
+* Referências: `24`
 
 ```sql
 orcamento (id, valor, datahoraorcamento)
