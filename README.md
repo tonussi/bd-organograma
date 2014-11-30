@@ -1,15 +1,16 @@
-[![Build Status](http://img.shields.io/travis/tonussi/atelopus-varius.svg?style=flat)](https://travis-ci.org/tonussi/atelopus-varius)
+__(ง •̀_•́)ง__
 
-(ง •̀_•́)ง Ordem de execução dos arquivos `.sql`.
-
-```sh
-psql -U uname -d dbname -a -f   functions.sql
-psql -U uname -d dbname -a -f      create.sql
-psql -U uname -d dbname -a -f       index.sql
-psql -U uname -d dbname -a -f constraints.sql
-psql -U uname -d dbname -a -f     trigger.sql
-psql -U uname -d dbname -a -f      insert.sql
-psql -U uname -d dbname -a -f       query.sql # test
+```sql
+psql -c 'create database organograma;' -U postgres
+psql -U postgres -d organograma -a -f drop.sql
+psql -U postgres -d organograma -a -f functions.sql
+psql -U postgres -d organograma -a -f create.sql
+psql -U postgres -d organograma -a -f index.sql
+psql -U postgres -d organograma -a -f constraints.sql
+psql -U postgres -d organograma -a -f trigger.sql
+psql -U postgres -d organograma -a -f insert.sql
+psql -U postgres -d organograma -a -f query.sql
+psql -c 'drop database if exists organograma;' -U postgres
 ```
 
 # Autores
